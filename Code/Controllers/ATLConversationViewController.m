@@ -121,16 +121,6 @@ static NSInteger const ATLPhotoActionSheet = 1000;
     _animationQueue = dispatch_queue_create("com.atlas.animationQueue", DISPATCH_QUEUE_SERIAL);
 }
 
-- (void)loadView
-{
-    [super loadView];
-    // Collection View Setup
-    self.collectionView = [[ATLConversationCollectionView alloc] initWithFrame:CGRectZero
-                                                          collectionViewLayout:[[UICollectionViewFlowLayout alloc] init]];
-    self.collectionView.delegate = self;
-    self.collectionView.dataSource = self;
-}
-
 - (void)setLayerClient:(LYRClient *)layerClient
 {
     if (self.hasAppeared) {
@@ -143,6 +133,12 @@ static NSInteger const ATLPhotoActionSheet = 1000;
 
 - (void)viewDidLoad
 {
+    // Collection View Setup
+    self.collectionView = [[ATLConversationCollectionView alloc] initWithFrame:CGRectZero
+                                                          collectionViewLayout:[[UICollectionViewFlowLayout alloc] init]];
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
+    
     [super viewDidLoad];
     
     [self configureControllerForConversation];
